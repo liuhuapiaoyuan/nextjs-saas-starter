@@ -4,6 +4,7 @@
 > 本项目仍在开发中，如果您发现任何问题，请提出意见！
 
 ## 介绍
+
 这是一个基于 **Next.js** 的SaaS应用程序启动模板，支持用户认证、Stripe支付集成以及为登录用户提供仪表盘。
 
 ## 特性
@@ -23,7 +24,6 @@
 - NextAuth.js
 - next-auth-oauth
 - Zod 用于数据校验
-
 
 ## 技术栈
 
@@ -48,39 +48,45 @@
 - [x] 菜单栏/侧边栏（移动端兼容）
 - [x] 页面切换动画
 - [x] 图表演示页面
- 
 
 ## 待办事项
+
 - [ ] API 模块引入 tRPC，实现后端 API 接口
 - [ ] 自动化 Swagger 文档生成
 
- ##  前端页面清单
- - 账号-登录页面
- - 账号-注册页面
- - 账号-忘记密码找回邮件功能
- - 账号-第三方账号绑定页面（GITHUB\GOOGLE）
+## 前端页面清单
 
- - 个人信息 - 修改资料
- - 个人信息 - 修改密码
- - 个人信息 - 配置
- - 个人信息 - 账单
- - 个人信息 - 登出
+- 账号-登录页面
+- 账号-注册页面
+- 账号-忘记密码找回邮件功能
+- 账号-第三方账号绑定页面（GITHUB\GOOGLE）
 
- - SaaS应用 - 落地页
- - SAAS应用 - 仪表盘
- - SAAS应用 - 分页表格/列表的演示页面
- - SAAS应用 - 图表演示页面
- - SAAS应用 - 表单提交演示页面
- - SAAS应用 - 付费订阅页 - Stripe付费
- - SAAS应用 - 支付账单页
- - SAAS应用 - Excalidraw - 创建画布 
- - SAAS应用 - Excalidraw - 创作作品（查看、删除、打标签） 
- - SAAS应用 - Excalidraw - 坐标标签 
- - SAAS应用 - API - key管理（创建、删除、过期）
- - SAAS应用 - API - 接口文档
- - SaaS应用 - Team 团队（成员邀请、成员角(member,role),团队信息）
+- 个人信息 - 修改资料
+- 个人信息 - 修改密码
+- 个人信息 - 配置
+- 个人信息 - 账单
+- 个人信息 - 登出
 
+- SaaS应用 - 落地页
+- SAAS应用 - 仪表盘
+- SAAS应用 - 分页表格/列表的演示页面
+- SAAS应用 - 图表演示页面
+- SAAS应用 - 表单提交演示页面
+- SAAS应用 - 付费订阅页 - Stripe付费
+- SAAS应用 - 支付账单页
+- SAAS应用 - Excalidraw - 创建画布
+- SAAS应用 - Excalidraw - 创作作品（查看、删除、打标签）
+- SAAS应用 - Excalidraw - 坐标标签
+- SAAS应用 - API - key管理（创建、删除、过期）
+- SAAS应用 - API - 接口文档
+- SaaS应用 - Team 团队（成员邀请、成员角(member,role),团队信息）
 
- - 优化交互-精美交互菜单栏/侧边栏
- - 优化交互-页面切换动画
- - 优化交互-最小依赖的移动端兼容（css）
+- 优化交互-精美交互菜单栏/侧边栏
+- 优化交互-页面切换动画
+- 优化交互-最小依赖的移动端兼容（css）
+
+## 部署
+
+### 使用 Vercel 部署
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fliuhuapiaoyuan%2Fnextjs-saas-starter)
