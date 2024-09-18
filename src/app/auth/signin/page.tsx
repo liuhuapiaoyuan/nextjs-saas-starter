@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export const description =
-  "一个登录页面，包含两个列。第一列包含登录表单，包括电子邮件和密码。有一个忘记密码的链接和一个注册链接，如果你没有账户的话。第二列包含一张封面图片。";
 
 export default function AuthSigninPage() {
   return (

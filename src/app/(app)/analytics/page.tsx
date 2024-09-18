@@ -18,7 +18,6 @@ import { AreaChartDemo } from '../dashboard/AreaChartDemo'
 import { Counters } from '../dashboard/Counters'
 import { RecentSales } from '../dashboard/RecentSales'
 
-export const description = 'A stacked area chart'
 
 export default function Component() {
   return (

@@ -18,7 +18,6 @@ import { Counters } from './Counters'
 import { AreaChartDemo } from './AreaChartDemo'
 import { RecentSales } from './RecentSales'
 
-export const description = 'A stacked area chart'
 
 export default function Component() {
   return (
