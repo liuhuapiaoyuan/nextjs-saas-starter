@@ -18,8 +18,7 @@ import { Counters } from './Counters'
 import { AreaChartDemo } from './AreaChartDemo'
 import { RecentSales } from './RecentSales'
 
-
-export default function Component() {
+export default function DashboardPage() {
   return (
     <div className='grid gap-5'>
       <div />
