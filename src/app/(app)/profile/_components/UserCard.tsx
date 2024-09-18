@@ -16,6 +16,6 @@ export function UserCard() {
         <a href="#" className="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Resume</a>
     </div>
 </div >
-        <hr className="my-6 border-t border-gray-300"></hr>
+        <hr className="my-6 border-t border-gray-300" />
     </>
 }

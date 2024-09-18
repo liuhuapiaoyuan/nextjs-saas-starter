@@ -131,7 +131,7 @@ const Star = ({ isGlowing, delay }: { isGlowing: boolean; delay: number }) => {
         delay: delay,
       }}
       className={cn("bg-[#666] h-[1px] w-[1px] rounded-full relative z-20")}
-    ></motion.div>
+     />
   );
 };
 
