@@ -17,6 +17,7 @@ import {
 import { Counters } from './Counters'
 import { AreaChartDemo } from './AreaChartDemo'
 import { RecentSales } from './RecentSales'
+import { BarChartDemo } from './BarChartDemo'
 
 export default function DashboardPage() {
   return (
@@ -29,14 +30,13 @@ export default function DashboardPage() {
         <Counters />
       </div>
       <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7'>
-        <Card className='col-span-4'>
-          <CardHeader>
-            <CardTitle>Overview</CardTitle>
-          </CardHeader>
-          <CardContent className='pl-2'>
-            <AreaChartDemo />
-          </CardContent>
-        </Card>
+        <div className='col-span-7'>
+          <BarChartDemo />
+        </div>
+        <div className='col-span-4'>
+          <AreaChartDemo />
+        </div>
+
         <Card className='col-span-4 md:col-span-3'>
           <CardHeader>
             <CardTitle>Recent Sales</CardTitle>

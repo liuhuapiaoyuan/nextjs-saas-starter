@@ -33,8 +33,9 @@
     "lucide-react": "^0.441.0",
     "next": "canary",
     "react": "rc",
+    "react-is": "rc",
     "react-dom": "rc",
-    "recharts": "2.13.0-alpha.5",
+    "recharts": "alpha",
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
@@ -50,5 +51,10 @@
     "tailwindcss": "^3.4.12",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "overrides": {
+      "react-is": "$react-is"
+    }
   }
 }

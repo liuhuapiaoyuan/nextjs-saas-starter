@@ -33,15 +33,15 @@ export default function ProfileLayout(props: PropsWithChildren) {
                 key={menu.href}
                 href={menu.href}
                 className={cn(
-                  'group/menu',
+                  'group',
                   'p-2',
                   `font-semibold `,
                   pathname === menu.href ? 'text-primary' : ''
                 )}
               >
-                <span className='group-hover/menu:translate-x-4 transition-transform  '>
+                <div className='group-hover:translate-x-4 transition-transform  '>
                   {menu.name}
-                </span>
+                </div>
               </Link>
             ))}
           </nav>
