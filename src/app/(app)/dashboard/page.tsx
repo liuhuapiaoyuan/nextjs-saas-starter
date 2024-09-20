@@ -18,6 +18,7 @@ import { Counters } from './Counters'
 import { AreaChartDemo } from './AreaChartDemo'
 import { RecentSales } from './RecentSales'
 import { BarChartDemo } from './BarChartDemo'
+import { GradientLineChartDemo } from './GradientLineChartDemo'
 
 export default function DashboardPage() {
   return (
@@ -35,6 +36,9 @@ export default function DashboardPage() {
         </div>
         <div className='col-span-4'>
           <AreaChartDemo />
+        </div>
+        <div className='col-span-3'>
+          <GradientLineChartDemo />
         </div>
 
         <Card className='col-span-4 md:col-span-3'>
