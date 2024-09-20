@@ -33,19 +33,22 @@ export default function ProfileLayout(props: PropsWithChildren) {
                 key={menu.href}
                 href={menu.href}
                 className={cn(
+                  'group/profile-menu-item',
                   `font-semibold ${
                     pathname === menu.href ? 'text-primary' : ''
-                  }`,
-                  'hover:translate-x-4 transition-transform'
+                  }`
                 )}
               >
-                {menu.name}
+                <span className='group-hover/profile-menu-item:translate-x-4 transition-transform'>
+                  {menu.name}
+                </span>
               </Link>
             ))}
           </nav>
           <div className='flex-1 w-1'>
             <Tabs
               value={pathname}
+              defaultValue={pathname}
               className='w-full mb-2 md:hidden'
               onValueChange={link => router.push(link)}
             >

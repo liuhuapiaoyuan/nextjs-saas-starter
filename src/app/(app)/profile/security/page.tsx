@@ -40,14 +40,11 @@ export default async function ProfileSecurityPage() {
           <div className='grid gap-2'>
             <div className='flex items-center border-b border-sky-50 py-4'>
               <Avatar className='h-9 w-9'>
-                <AvatarImage
-                  src='https://material-kit-pro-react.devias.io/assets/avatar-5.png'
-                  alt='Avatar'
-                />
+                <AvatarImage src='/providers/github.png' alt='Avatar' />
                 <AvatarFallback>OM</AvatarFallback>
               </Avatar>
               <div className='ml-4 space-y-1'>
-                <p className='text-sm font-medium leading-none'>Google</p>
+                <p className='text-sm font-medium leading-none'>Github</p>
                 <p className='text-sm text-muted-foreground'>已绑定</p>
               </div>
               <div className='ml-auto '>
@@ -56,10 +53,7 @@ export default async function ProfileSecurityPage() {
             </div>
             <div className='flex items-center py-4'>
               <Avatar className='h-9 w-9'>
-                <AvatarImage
-                  src='https://material-kit-pro-react.devias.io/assets/avatar-5.png'
-                  alt='Avatar'
-                />
+                <AvatarImage src='/providers/wechat.svg' alt='Avatar' />
                 <AvatarFallback>OM</AvatarFallback>
               </Avatar>
               <div className='ml-4 space-y-1'>
