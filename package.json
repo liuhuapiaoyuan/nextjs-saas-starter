@@ -21,6 +21,7 @@
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
@@ -34,20 +35,20 @@
     "react": "rc",
     "react-dom": "rc",
     "recharts": "2.13.0-alpha.5",
-    "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
-    "@types/node": "^20.16.5",
-    "eslint": "^8.57.1",
-    "@types/react": "^18.3.4",
-    "@types/react-dom": "^18.3.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
     "eslint-config-next": "rc",
     "eslint-config-prettier": "^9.1.0",
-    "postcss": "^8.4.47",
+    "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-eslint": "^16.3.0",
     "tailwindcss": "^3.4.12",
-    "typescript": "^5.6.2"
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5"
   }
 }
