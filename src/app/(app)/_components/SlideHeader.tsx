@@ -24,8 +24,8 @@ export function SlideHeader() {
           <AvatarFallback>OM</AvatarFallback>
         </Avatar>
 
-        <div className='min-w-0  text-left  flex flex-col justify-start  group-data-[slide-state=closed]:sr-only'>
-          <span className='block truncate text-xl font-bold text-zinc-950 dark:text-white'>
+        <div className='min-w-0  text-left flex-1 flex flex-col justify-start  group-data-[slide-state=closed]:sr-only'>
+          <span className='block truncate text-xl  text-zinc-950 dark:text-white'>
             灵感笔记
           </span>
         </div>
