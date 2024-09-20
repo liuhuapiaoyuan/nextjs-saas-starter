@@ -30,6 +30,7 @@ function ChatItem(props: { role: 'user' | 'assistant'; content: string }) {
         )}
       >
         <Image
+          priority={false}
           alt='user'
           width={100}
           height={100}

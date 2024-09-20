@@ -17,13 +17,11 @@ export function UserProfile(props: PropsWithChildren<{}>) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
-        <Link href='/profile'>
-          <DropdownMenuLabel>
-            <div className='w-[250px]'>
-              <UserCard />
-            </div>
-          </DropdownMenuLabel>
-        </Link>
+        <DropdownMenuLabel>
+          <div className='w-[250px]'>
+            <UserCard />
+          </div>
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <Link href='/profile'>
           <DropdownMenuItem>设置</DropdownMenuItem>

@@ -26,20 +26,20 @@ export default function ProfileLayout(props: PropsWithChildren) {
         </div>
 
         <div className='flex gap-5'>
-          <nav className=' flex-col w-56 gap-4 text-sm text-muted-foreground hidden md:flex'>
+          <nav className=' flex-col w-56  text-sm text-muted-foreground hidden md:flex'>
             <UserCard />
             {menus.map(menu => (
               <Link
                 key={menu.href}
                 href={menu.href}
                 className={cn(
-                  'group/profile-menu-item',
-                  `font-semibold ${
-                    pathname === menu.href ? 'text-primary' : ''
-                  }`
+                  'group/menu',
+                  'p-2',
+                  `font-semibold `,
+                  pathname === menu.href ? 'text-primary' : ''
                 )}
               >
-                <span className='group-hover/profile-menu-item:translate-x-4 transition-transform'>
+                <span className='group-hover/menu:translate-x-4 transition-transform  '>
                   {menu.name}
                 </span>
               </Link>

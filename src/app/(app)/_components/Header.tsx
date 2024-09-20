@@ -61,6 +61,7 @@ export function Header() {
           className='overflow-hidden size-8 rounded-full'
         >
           <Image
+            priority={false}
             src='/logo.png'
             width={36}
             height={36}

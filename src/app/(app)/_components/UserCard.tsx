@@ -10,6 +10,7 @@ export function UserCard() {
           <div className='relative inline-flex'>
             <span className='absolute bottom-0 right-0 h-3 w-3 rounded-full border bg-green-600 dark:border-slate-900 dark:bg-green-600 dark:text-slate-100' />
             <Image
+              priority={false}
               src='/logo.png'
               alt='user'
               width={100}
