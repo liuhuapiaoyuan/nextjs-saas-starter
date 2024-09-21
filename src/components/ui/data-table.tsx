@@ -217,8 +217,8 @@ export type TablePaginationProps = {
 export function TablePagination(props: TablePaginationProps) {
   const totalPage = Math.ceil(props.total / props.pageSize)
   const [current, setCurrent] = React.useState(props.page)
-  const maxShowTotal = props.maxShowTotal || 10
-  const pagesArray = buildPage(totalPage, current, maxShowTotal)
+  const maxShowTotal = props.maxShowTotal ?? 10
+  const pagesArray = computeDisplayedPages(totalPage, current, maxShowTotal)
   const handlePageChange = (page: number) => {
     if (page !== current) {
       setCurrent(page)
@@ -231,18 +231,23 @@ export function TablePagination(props: TablePaginationProps) {
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            href='#'
+            className='cursor-pointer select-none'
             onClick={() => handlePageChange(Math.max(current - 1, 1))}
-          />
+          >
+            上一页
+          </PaginationPrevious>
         </PaginationItem>
 
         {pagesArray.map((page, index) =>
           page === -1 ? (
-            <PaginationItem key={`ellpisis_${index}`}>
+            <PaginationItem
+              className='cursor-pointer select-none'
+              key={`ellpisis_${index}`}
+            >
               <PaginationEllipsis />
             </PaginationItem>
           ) : (
-            <PaginationItem key={page}>
+            <PaginationItem className='cursor-pointer select-none' key={page}>
               <PaginationLink
                 isActive={page === current}
                 onClick={() => handlePageChange(page)}
@@ -255,62 +260,82 @@ export function TablePagination(props: TablePaginationProps) {
 
         <PaginationItem>
           <PaginationNext
-            href='#'
+            className='cursor-pointer select-none'
             onClick={() => handlePageChange(Math.min(current + 1, totalPage))}
-          />
+          >
+            下一页
+          </PaginationNext>
         </PaginationItem>
       </PaginationContent>
     </Pagination>
   )
 }
-/**
- * 自动计算是否显示省略号来优化显示内容
- * @param totalPage 总页码
- * @param page  当前页码
- * @param maxShowPage  最多显示的数量
- * @returns 返回页面渲染的数组，其中用-1代表中间省略号
- */
-function buildPage(totalPage: number, page: number, maxShowPage: number = 10) {
-  if (totalPage <= maxShowPage) {
-    return Array.from({ length: totalPage }, (_, i) => i + 1)
-  }
 
-  const pages: (number | -1)[] = []
-  const halfRange = Math.floor(maxShowPage / 2)
+function computeDisplayedPages(
+  totalPages: number,
+  currentPage: number,
+  max: number = 10,
+  divider: number = -1
+): number[] {
+  const maxDisplayedPages = Math.max(max, 5)
 
-  // 1. 如果当前页码较小，显示前面页码和尾部页码
-  if (page <= halfRange) {
-    pages.push(...Array.from({ length: maxShowPage - 5 }, (_, i) => i + 1))
-    if (totalPage > maxShowPage) {
-      pages.push(-1)
-      pages.push(...Array.from({ length: 5 }, (_, i) => totalPage - 2 + i))
+  const r = Math.floor((Math.min(maxDisplayedPages, totalPages) - 5) / 2)
+  const r1 = currentPage - r
+  const r2 = currentPage + r
+
+  const beforeWrapped = r1 - 1 > 1
+  const afterWrapped = r2 + 1 < totalPages
+
+  const items: number[] = []
+
+  if (totalPages <= maxDisplayedPages) {
+    for (let i = 1; i <= totalPages; i++) {
+      items.push(i)
     }
-    console.log(pages)
-  }
-  // 2. 如果当前页码接近尾部，显示前面页码和尾部页码
-  else if (page > totalPage - halfRange) {
-    pages.push(1, 2, 3, 4, 5)
-    pages.push(-1)
-    pages.push(
-      ...Array.from(
-        { length: halfRange },
-        (_, i) => totalPage - halfRange + 1 + i
-      )
-    )
-  }
-  // 3. 如果当前页码在中间，显示前面、中间和尾部页码
-  else {
-    pages.push(1, 2, 3)
-    pages.push(-1)
-    pages.push(
-      ...Array.from(
-        { length: maxShowPage - 6 },
-        (_, i) => page - (halfRange - 3) + i
-      )
-    )
-    pages.push(-1)
-    pages.push(...Array.from({ length: 3 }, (_, i) => totalPage - 2 + i))
+    return items
   }
 
-  return Array.from(pages) // 去除重复项
+  items.push(1)
+
+  if (beforeWrapped) items.push(divider)
+
+  if (!afterWrapped) {
+    const addedItems = currentPage + r + 2 - totalPages
+    for (let i = currentPage - r - addedItems; i <= currentPage - r - 1; i++) {
+      items.push(i)
+    }
+  }
+
+  for (let i = Math.max(2, r1); i <= Math.min(totalPages, r2); i++) {
+    items.push(i)
+  }
+
+  if (!beforeWrapped) {
+    const addedItems = 1 - (currentPage - r - 2)
+    for (let i = currentPage + r + 1; i <= currentPage + r + addedItems; i++) {
+      items.push(i)
+    }
+  }
+
+  if (afterWrapped) items.push(divider)
+
+  if (r2 < totalPages) {
+    items.push(totalPages)
+  }
+
+  // Replace divider by number on start edge case [1, '…', 3, ...]
+  if (items.length >= 3 && items[1] === divider && items[2] === 3) {
+    items[1] = 2
+  }
+
+  // Replace divider by number on end edge case [..., 48, '…', 50]
+  if (
+    items.length >= 3 &&
+    items[items.length - 2] === divider &&
+    items[items.length - 1] === items.length
+  ) {
+    items[items.length - 2] = items.length - 1
+  }
+
+  return items
 }
