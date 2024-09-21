@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Moon, Sun } from 'lucide-react'
+import { Loader, Moon, Sun } from 'lucide-react'
 import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
@@ -24,9 +24,17 @@ const ThemeList = [
     label: 'Dark Mode',
   },
 ]
+function ThemeContent() {
+  const { theme } = useTheme()
+  return ThemeList.find(item => item.value === theme)?.icon
+}
+const ThemeContentDynamic = dynamic(() => Promise.resolve(ThemeContent), {
+  ssr: false,
+  loading: () => <Loader width={15} className='animate animate-spin' />,
+})
+
 function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme()
-  useEffect(() => {}, [])
+  const { setTheme } = useTheme()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -35,7 +43,7 @@ function ThemeSwitcher() {
           size='icon'
           className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground size-8'
         >
-          {ThemeList.find(item => item.value === theme)?.icon}
+          <ThemeContentDynamic />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
@@ -54,7 +62,5 @@ function ThemeSwitcher() {
     </DropdownMenu>
   )
 }
-const ThemeSwitcherDynamic = dynamic(() => Promise.resolve(ThemeSwitcher), {
-  ssr: false,
-})
-export { ThemeSwitcherDynamic as ThemeSwitcher }
+
+export { ThemeSwitcher }
