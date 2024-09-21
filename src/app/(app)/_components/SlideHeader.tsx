@@ -19,7 +19,7 @@ export function SlideHeader() {
           <AvatarImage
             src='/logo.png'
             alt='Avatar'
-            className='border rounded-full overflow-hidden'
+            className='border rounded-full overflow-hidden dark:bg-foreground'
           />
           <AvatarFallback>OM</AvatarFallback>
         </Avatar>

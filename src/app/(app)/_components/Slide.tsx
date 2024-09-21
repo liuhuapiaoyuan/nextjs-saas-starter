@@ -70,19 +70,19 @@ export function Slide(props: {
           <UserCard />
         </div>
       )}
-      <div className='absolute right-0 translate-x-[50%] z-10 top-10'>
+      <div className='absolute right-0 translate-x-[50%] z-10 top-20'>
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
               onClick={() => setIsOpen(!isOpen)}
-              className='flex  items-center justify-center w-10 h-10 p-0 rounded-full bg-white border text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground  '
+              className='flex  items-center justify-center w-10 h-10 p-0 rounded-full bg-background border text-muted-foreground transition-colors  hover:bg-accent hover:text-accent-foreground  '
             >
               {isOpen ? (
                 <PanelRightOpen className='h-5 w-5' />
               ) : (
                 <PanelRightClose className='h-5 w-5' />
               )}
-              <span className='sr-only'>设置</span>
+              <span className='sr-only'>切换</span>
             </Button>
           </TooltipTrigger>
           <TooltipContent side='right'>切换菜单</TooltipContent>

@@ -15,7 +15,7 @@ export function UserCard() {
               alt='user'
               width={100}
               height={100}
-              className='h-10 w-10 rounded-full border dark:border-slate-700'
+              className='h-10 w-10 rounded-full border dark:bg-foreground'
             />
           </div>
           <div className='w-1 flex flex-1 flex-col gap-y-2'>

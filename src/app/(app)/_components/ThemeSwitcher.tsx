@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Moon, Sun } from 'lucide-react'
 import { useEffect } from 'react'
+import dynamic from 'next/dynamic'
 
 const ThemeList = [
   {
@@ -23,7 +24,7 @@ const ThemeList = [
     label: 'Dark Mode',
   },
 ]
-export function ThemeSwitcher() {
+function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
   useEffect(() => {}, [])
   return (
@@ -53,3 +54,7 @@ export function ThemeSwitcher() {
     </DropdownMenu>
   )
 }
+const ThemeSwitcherDynamic = dynamic(() => Promise.resolve(ThemeSwitcher), {
+  ssr: false,
+})
+export { ThemeSwitcherDynamic as ThemeSwitcher }

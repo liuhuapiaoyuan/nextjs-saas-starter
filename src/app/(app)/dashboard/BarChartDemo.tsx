@@ -170,7 +170,11 @@ export function BarChartDemo() {
         </div>
       </CardHeader>
       <CardContent className='px-2 sm:p-6'>
-        <ChartContainer config={chartConfig} className='aspect-auto w-full'>
+        <ChartContainer
+          config={chartConfig}
+          style={{ height: 430 }}
+          className='aspect-auto h-[250px] w-full'
+        >
           <BarChart
             accessibilityLayer
             data={chartData}

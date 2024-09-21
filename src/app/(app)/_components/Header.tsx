@@ -66,7 +66,7 @@ export function Header() {
             width={36}
             height={36}
             alt='头像'
-            className='overflow-hidden rounded-full'
+            className='overflow-hidden rounded-full dark:bg-foreground'
           />
         </Button>
       </UserProfile>
