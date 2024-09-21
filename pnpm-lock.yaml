@@ -77,6 +77,9 @@ importers:
       next:
         specifier: canary
         version: 15.0.0-canary.160(react-dom@19.0.0-rc-e740d4b1-20240919(react@19.0.0-rc-e740d4b1-20240919))(react@19.0.0-rc-e740d4b1-20240919)
+      next-themes:
+        specifier: ^0.3.0
+        version: 0.3.0(react-dom@19.0.0-rc-e740d4b1-20240919(react@19.0.0-rc-e740d4b1-20240919))(react@19.0.0-rc-e740d4b1-20240919)
       react:
         specifier: rc
         version: 19.0.0-rc-e740d4b1-20240919
@@ -2103,6 +2106,12 @@ packages:
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+
+  next-themes@0.3.0:
+    resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
 
   next@15.0.0-canary.160:
     resolution: {integrity: sha512-Z0ynNy52FHQTH4+d2mjpNzOb58/SiMV89TRzVs8ddkRAbrDAOGdQsWAPCmpu+vaNiO7CHbt/47DxuWz306zCjw==}
@@ -4845,6 +4854,11 @@ snapshots:
   nanoid@3.3.7: {}
 
   natural-compare@1.4.0: {}
+
+  next-themes@0.3.0(react-dom@19.0.0-rc-e740d4b1-20240919(react@19.0.0-rc-e740d4b1-20240919))(react@19.0.0-rc-e740d4b1-20240919):
+    dependencies:
+      react: 19.0.0-rc-e740d4b1-20240919
+      react-dom: 19.0.0-rc-e740d4b1-20240919(react@19.0.0-rc-e740d4b1-20240919)
 
   next@15.0.0-canary.160(react-dom@19.0.0-rc-e740d4b1-20240919(react@19.0.0-rc-e740d4b1-20240919))(react@19.0.0-rc-e740d4b1-20240919):
     dependencies:

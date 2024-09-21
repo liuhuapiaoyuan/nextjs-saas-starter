@@ -1,4 +1,7 @@
+'use client'
 import { Button } from '@/components/ui/button'
+import { useTheme } from 'next-themes'
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,7 +9,23 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Moon, Sun } from 'lucide-react'
+import { useEffect } from 'react'
+
+const ThemeList = [
+  {
+    value: 'light',
+    icon: <Sun width={15} />,
+    label: 'Light Mode',
+  },
+  {
+    value: 'dark',
+    icon: <Moon width={15} />,
+    label: 'Dark Mode',
+  },
+]
 export function ThemeSwitcher() {
+  const { theme, setTheme } = useTheme()
+  useEffect(() => {}, [])
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -15,22 +34,21 @@ export function ThemeSwitcher() {
           size='icon'
           className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground size-8'
         >
-          <Sun width='50%' />
+          {ThemeList.find(item => item.value === theme)?.icon}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
-        <DropdownMenuItem>
-          <div className='flex  items-center gap-1'>
-            <Sun width={15} />
-            白天
-          </div>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <div className='flex items-center gap-1'>
-            <Moon width={15} />
-            夜间
-          </div>
-        </DropdownMenuItem>
+        {ThemeList.map(item => (
+          <DropdownMenuItem key={item.value}>
+            <div
+              className='flex  items-center gap-1'
+              onClick={() => setTheme(item.value)}
+            >
+              {item.icon}
+              {item.label}
+            </div>
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   )

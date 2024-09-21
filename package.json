@@ -32,9 +32,10 @@
     "framer-motion": "^11.5.5",
     "lucide-react": "^0.441.0",
     "next": "canary",
+    "next-themes": "^0.3.0",
     "react": "rc",
-    "react-is": "rc",
     "react-dom": "rc",
+    "react-is": "rc",
     "recharts": "alpha",
     "tailwind-merge": "^2.5.2"
   },
