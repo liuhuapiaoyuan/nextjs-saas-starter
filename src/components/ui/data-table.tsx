@@ -138,7 +138,7 @@ export function DataTable<T extends object>({
       )}
 
       {/* 表格主体 */}
-      <div className='rounded-md border bg-white'>
+      <div className='rounded-md border bg-background'>
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map(headerGroup => (

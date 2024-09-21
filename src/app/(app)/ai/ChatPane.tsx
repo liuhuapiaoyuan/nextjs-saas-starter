@@ -7,7 +7,7 @@ export function ChatPane() {
         <h2 className='inline px-5 text-lg font-medium text-slate-800 dark:text-slate-200'>
           对话
         </h2>
-        <span className='rounded-full bg-primary px-2 py-1 text-xs text-slate-200'>
+        <span className='rounded-full bg-primary dark:bg-primary/10 px-2 py-1 text-xs text-slate-200'>
           24
         </span>
       </div>
