@@ -50,7 +50,7 @@ export function AreaChartDemo() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} style={{ height: 340 }}>
+        <ChartContainer config={chartConfig} className='h-[250px]'>
           <AreaChart
             accessibilityLayer
             data={chartData}

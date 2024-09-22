@@ -15,11 +15,9 @@ import {
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { SlideHeader } from './SlideHeader'
-import { SlideUserProfile } from './SlideUserProfile'
-import { SlideMenuItem } from './SlideMenuItem'
-import Link from 'next/link'
 import { UserCard } from './UserCard'
 import { Button } from '@/components/ui/button'
+import { MenuGroup, MenuItem } from '@/components/app/menus'
 
 export function Slide(props: {
   menus: Array<{
@@ -51,13 +49,13 @@ export function Slide(props: {
         group-data-[slide-state=closed]:p-2
         flex-1 flex-col overflow-y-auto p-4 [&>[data-slot=section]+[data-slot=section]]:mt-8'
         >
+          <MenuGroup title='应用' />
           {menus.map((menu, index) => (
-            <SlideMenuItem
+            <MenuItem
               key={index}
               href={menu.href}
               icon={menu.icon}
               label={menu.title}
-              isOpen={isOpen}
               className={
                 menu.href === pathname ? 'bg-accent text-accent-foreground' : ''
               }

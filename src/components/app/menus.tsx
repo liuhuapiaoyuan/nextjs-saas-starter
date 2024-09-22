@@ -6,22 +6,21 @@ import {
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { ReactNode } from 'react'
+import { SvgComponent, SvgComponentProps } from './svg-component'
+import Image from 'next/image'
 
-interface SlideMenuItemProps {
+export interface MenuItemProps {
   href: string
   icon: ReactNode
   label: string
-  isOpen: boolean
   className?: string
 }
-
-export function SlideMenuItem({
-  href,
-  icon,
-  label,
-  isOpen,
-  className,
-}: SlideMenuItemProps) {
+/**
+ * 菜单
+ * @param param0
+ * @returns
+ */
+export function MenuItem({ href, icon, label, className }: MenuItemProps) {
   return (
     <Tooltip delayDuration={0}>
       <TooltipTrigger asChild>
@@ -37,12 +36,61 @@ export function SlideMenuItem({
           )}
         >
           {icon}
-          <span className='group-data-[slide-state=closed]:sr-only group-hover/item:translate-x-3  transition-transform'>
+          <span className='group-data-[slide-state=closed]:sr-only group-hover/item:translate-x-3  transition-transform text-xs'>
             {label}
           </span>
         </Link>
       </TooltipTrigger>
       <TooltipContent side='right'>{label}</TooltipContent>
     </Tooltip>
+  )
+}
+
+/**
+ * 菜单分组
+ * @param props
+ * @returns
+ */
+export function MenuGroup(props: { title: string }) {
+  return (
+    <div className='group flex items-center justify-between px-container space-x-2.5 py-2.5'>
+      <span className='text-xs font-semibold uppercase text-muted-foreground'>
+        {props.title}
+      </span>
+    </div>
+  )
+}
+
+const isSVG = (url: string) => {
+  return url && url.startsWith('<svg')
+}
+
+/**
+ *  菜单图标
+ * @param src 图标地址，兼容图片url，兼容svg/xml
+ * @returns
+ */
+export function MenuIcon(
+  props: { src: string } & {
+    width?: number
+    height?: number
+    alt?: string
+  } & Omit<SvgComponentProps, 'content'>
+) {
+  const { src, width = 24, height = 24, alt, ...reset } = props
+  return (
+    <div>
+      {isSVG(src) ? (
+        <SvgComponent content={src} {...reset} />
+      ) : (
+        <Image
+          src={src}
+          alt={alt ?? ''}
+          width={width}
+          height={height}
+          {...reset}
+        />
+      )}
+    </div>
   )
 }

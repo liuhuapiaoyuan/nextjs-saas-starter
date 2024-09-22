@@ -8,11 +8,7 @@ import { Textarea } from '@/components/ui/textarea'
 
 function SubmitButton() {
   const { pending } = useFormStatus()
-  return (
-    <Button className='  ' type='submit'>
-      {pending ? '发送...' : '发送'}
-    </Button>
-  )
+  return <Button type='submit'>{pending ? '发送...' : '发送'}</Button>
 }
 
 export function ChatContainerInput() {
@@ -39,7 +35,6 @@ export function ChatContainerInput() {
           rows={1}
           required
         />
-
         <SubmitButton />
       </div>
     </form>

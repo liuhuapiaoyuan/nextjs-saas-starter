@@ -172,7 +172,6 @@ export function BarChartDemo() {
       <CardContent className='px-2 sm:p-6'>
         <ChartContainer
           config={chartConfig}
-          style={{ height: 430 }}
           className='aspect-auto h-[250px] w-full'
         >
           <BarChart

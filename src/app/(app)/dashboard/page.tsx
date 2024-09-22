@@ -31,14 +31,17 @@ export default function DashboardPage() {
         <Counters />
       </div>
       <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7'>
-        <div className='col-span-4'>
+        <div className='col-span-7'>
           <BarChartDemo />
         </div>
-        <div className='col-span-4 md:col-span-3'>
+        <div className='col-span-4 md:col-span-4'>
           <AreaChartDemo />
         </div>
+        <div className='col-span-4 md:col-span-3'>
+          <GradientLineChartDemo />
+        </div>
 
-        <Card className='col-span-4 md:col-span-3'>
+        <Card className='col-span-4 md:col-span-4'>
           <CardHeader>
             <CardTitle>Recent Sales</CardTitle>
             <CardDescription>You made 265 sales this month.</CardDescription>
@@ -56,7 +59,7 @@ export default function DashboardPage() {
             <RecentSales />
           </CardContent>
         </Card>
-        <Card className='col-span-4'>
+        <Card className='col-span-7'>
           <CardHeader>
             <CardTitle>Recent Sales</CardTitle>
             <CardDescription>You made 265 sales this month.</CardDescription>

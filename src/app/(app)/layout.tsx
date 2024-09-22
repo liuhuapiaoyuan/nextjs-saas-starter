@@ -2,6 +2,7 @@ import type { PropsWithChildren } from 'react'
 import { Header } from './_components/Header'
 import { Slide } from './_components/Slide'
 import { getMenus } from '@/service/menu.service'
+import { SvgComponent } from '@/components/app/svg-component'
 
 export default function AppLayout(props: PropsWithChildren) {
   const { children } = props
@@ -14,11 +15,7 @@ export default function AppLayout(props: PropsWithChildren) {
           href: z.href,
           keywords: z.keywords,
           icon: z.svg ? (
-            <span
-              dangerouslySetInnerHTML={{
-                __html: z.svg,
-              }}
-            />
+            <SvgComponent className='size-5' content={z.svg} />
           ) : undefined,
         }))}
       />

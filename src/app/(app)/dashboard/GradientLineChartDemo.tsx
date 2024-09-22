@@ -63,7 +63,7 @@ export function GradientLineChartDemo() {
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer className='aspect-square' config={chartConfig}>
+        <ChartContainer className='h-[250px]' config={chartConfig}>
           <LineChart
             accessibilityLayer
             data={chartData}

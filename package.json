@@ -57,5 +57,8 @@
     "overrides": {
       "react-is": "$react-is"
     }
+  },
+  "overrides": {
+    "react-is": "$react-is"
   }
 }
