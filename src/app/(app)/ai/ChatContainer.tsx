@@ -6,6 +6,7 @@ import { getMessages } from './actions'
 import { cn } from '@/lib/utils'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { ChatPane } from './ChatPane'
+import { ChatListContainer } from './ChatListContainer'
 function ChatItem(props: { role: 'user' | 'assistant'; content: string }) {
   const { role = 'user', content } = props
   const color = role === 'user' ? '363536' : '354ea1'
@@ -52,7 +53,7 @@ export async function ChatContainer() {
   const messages = await getMessages()
   return (
     <div className='flex h-full gap-2 w-full flex-col relative'>
-      <div className='flex-1 overflow-y-auto  rounded-xl bg-slate-200 p-4 text-sm leading-6 text-slate-900 dark:bg-background/85 dark:text-slate-300 sm:text-base sm:leading-7'>
+      <div className='flex-1 h-1 flex flex-col  rounded-xl bg-slate-200 p-4 text-sm leading-6 text-slate-900 dark:bg-background/85 dark:text-slate-300 sm:text-base sm:leading-7'>
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -67,13 +68,17 @@ export async function ChatContainer() {
           </SheetContent>
         </Sheet>
 
-        {messages.map((message, index) => (
-          <ChatItem
-            key={index}
-            role={message.role as 'user'}
-            content={message.content}
-          />
-        ))}
+        <div className='flex-1 h-1'>
+          <ChatListContainer>
+            {messages.map((message, index) => (
+              <ChatItem
+                key={index}
+                role={message.role as 'user'}
+                content={message.content}
+              />
+            ))}
+          </ChatListContainer>
+        </div>
       </div>
 
       <div className='mt-4 flex w-full gap-x-2 overflow-x-auto whitespace-nowrap text-xs text-slate-600 dark:text-slate-300 sm:text-sm'>
