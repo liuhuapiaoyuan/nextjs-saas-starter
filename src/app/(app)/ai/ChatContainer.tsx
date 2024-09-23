@@ -1,9 +1,11 @@
 import { Button } from '@/components/ui/button'
-import { Copy, MicrochipIcon, ThumbsDown, ThumbsUp } from 'lucide-react'
+import { Copy, Menu, MicrochipIcon, ThumbsDown, ThumbsUp } from 'lucide-react'
 import { ChatContainerInput } from './ChatContainerInput'
 import Image from 'next/image'
 import { getMessages } from './actions'
 import { cn } from '@/lib/utils'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { ChatPane } from './ChatPane'
 function ChatItem(props: { role: 'user' | 'assistant'; content: string }) {
   const { role = 'user', content } = props
   const color = role === 'user' ? '363536' : '354ea1'
@@ -49,8 +51,22 @@ function ChatItem(props: { role: 'user' | 'assistant'; content: string }) {
 export async function ChatContainer() {
   const messages = await getMessages()
   return (
-    <div className='flex h-full gap-2 w-full flex-col'>
-      <div className='flex-1 overflow-y-auto rounded-xl bg-slate-200 p-4 text-sm leading-6 text-slate-900 dark:bg-slate-800 dark:text-slate-300 sm:text-base sm:leading-7'>
+    <div className='flex h-full gap-2 w-full flex-col relative'>
+      <div className='flex-1 overflow-y-auto  rounded-xl bg-slate-200 p-4 text-sm leading-6 text-slate-900 dark:bg-background/85 dark:text-slate-300 sm:text-base sm:leading-7'>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              variant='ghost'
+              className='w-10 h-10 p-0  md:hidden flex items-center justify-center '
+            >
+              <Menu className='size-5 ' />
+            </Button>
+          </SheetTrigger>
+          <SheetContent className='p-0'>
+            <ChatPane />
+          </SheetContent>
+        </Sheet>
+
         {messages.map((message, index) => (
           <ChatItem
             key={index}
@@ -61,13 +77,13 @@ export async function ChatContainer() {
       </div>
 
       <div className='mt-4 flex w-full gap-x-2 overflow-x-auto whitespace-nowrap text-xs text-slate-600 dark:text-slate-300 sm:text-sm'>
-        <button className='rounded-lg bg-slate-200 p-2 hover:bg-primary hover:text-slate-200 dark:bg-slate-800 dark:hover:bg-primary dark:hover:text-slate-50'>
+        <button className='rounded-lg bg-slate-200 p-2 hover:bg-primary hover:text-slate-200 dark:bg-foreground/20 dark:hover:bg-foreground/10 dark:hover:text-slate-50'>
           Regenerate response
         </button>
-        <button className='rounded-lg bg-slate-200 p-2 hover:bg-primary hover:text-slate-200 dark:bg-slate-800 dark:hover:bg-primary dark:hover:text-slate-50'>
+        <button className='rounded-lg bg-slate-200 p-2 hover:bg-primary hover:text-slate-200 bg-foreground/20 dark:hover:bg-foreground/10 dark:hover:text-slate-50'>
           Use prompt suggestions
         </button>
-        <button className='rounded-lg bg-slate-200 p-2 hover:bg-primary hover:text-slate-200 dark:bg-slate-800 dark:hover:bg-primary dark:hover:text-slate-50'>
+        <button className='rounded-lg bg-slate-200 p-2 hover:bg-primary hover:text-slate-200 bg-foreground/20 dark:hover:bg-foreground/10 dark:hover:text-slate-50'>
           Toggle web search
         </button>
       </div>

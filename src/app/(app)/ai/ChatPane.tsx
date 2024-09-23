@@ -2,7 +2,7 @@ import { Plus, TextSearch } from 'lucide-react'
 
 export function ChatPane() {
   return (
-    <div className='max-w-xl h-full flex flex-col rounded-lg border border-slate-300  py-8 dark:border-slate-200/10 dark:bg-slate-900'>
+    <div className='max-w-xl h-full flex flex-col rounded-lg border border-slate-300  py-8 dark:border-slate-200/10 dark:bg-foreground/10'>
       <div className='flex items-start'>
         <h2 className='inline px-5 text-lg font-medium text-slate-800 dark:text-slate-200'>
           对话
@@ -19,7 +19,7 @@ export function ChatPane() {
           <input
             id='search-chats'
             type='text'
-            className='w-full rounded-lg border border-slate-300 bg-slate-50 p-3 pr-10 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200'
+            className='w-full rounded-lg border border-slate-300 bg-slate-50 p-3 pr-10 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary dark:border-foreground/20 dark:bg-foreground/10 dark:text-slate-200'
             placeholder='Search chats'
             required
           />

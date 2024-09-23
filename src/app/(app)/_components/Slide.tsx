@@ -36,7 +36,7 @@ export function Slide(props: {
       data-slide-state={isOpen ? 'open' : 'closed'}
       className={cn(
         'relative',
-        'inset-y-0 group left-0 transition-all z-10 hidden w-16 flex-col border-r bg-background sm:flex',
+        'inset-y-0 group left-0 transition-all z-10 hidden w-16 flex-col border-r bg-background md:flex',
         isOpen && 'w-[260px]'
       )}
     >
@@ -64,7 +64,7 @@ export function Slide(props: {
         </div>
       </nav>
       {isOpen && (
-        <div className='px-2 sm:py-2  '>
+        <div className='px-2 md:py-2  '>
           <UserCard />
         </div>
       )}
