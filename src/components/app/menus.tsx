@@ -53,7 +53,7 @@ export function MenuItem({ href, icon, label, className }: MenuItemProps) {
  */
 export function MenuGroup(props: { title: string }) {
   return (
-    <div className='group flex items-center justify-between px-container space-x-2.5 py-2.5'>
+    <div className='group flex items-center justify-between px-container space-x-2.5 py-2.5 group-data-[slide-state=closed]:hidden'>
       <span className='text-xs font-semibold uppercase text-muted-foreground'>
         {props.title}
       </span>

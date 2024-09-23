@@ -19,6 +19,8 @@ import { AreaChartDemo } from './AreaChartDemo'
 import { RecentSales } from './RecentSales'
 import { BarChartDemo } from './BarChartDemo'
 import { GradientLineChartDemo } from './GradientLineChartDemo'
+import { ErrorBoundary } from 'react-error-boundary'
+import ErrorFallback from '@/components/app/error-fallback'
 
 export default function DashboardPage() {
   return (
@@ -35,7 +37,9 @@ export default function DashboardPage() {
           <BarChartDemo />
         </div>
         <div className='col-span-4 md:col-span-4'>
-          <AreaChartDemo />
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <AreaChartDemo />
+          </ErrorBoundary>
         </div>
         <div className='col-span-4 md:col-span-3'>
           <GradientLineChartDemo />

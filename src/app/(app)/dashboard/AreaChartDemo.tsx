@@ -41,6 +41,10 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function AreaChartDemo() {
+  if (Math.random() < 0.5) {
+    throw new Error('Random error')
+  }
+
   return (
     <Card>
       <CardHeader>
