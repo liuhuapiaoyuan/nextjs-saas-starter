@@ -7,7 +7,21 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "stripe:login": "stripe login",
+    "stripe:listen": "stripe listen --forward-to=localhost:3000/api/webhooks",
+    "stripe:fixtures": "stripe fixtures fixtures/stripe-fixtures.json",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:status": "supabase status",
+    "supabase:restart": "supabase stop &&supabase start",
+    "supabase:reset": "supabase db reset",
+    "supabase:link": "supabase link",
+    "supabase:generate-types": "supabase gen types typescript --local --schema public > src/types/db.ts",
+    "supabase:generate-migration": "supabase db diff | supabase migration new",
+    "supabase:generate-seed": "supabase db dump --data-only -f supabase/seed.sql",
+    "supabase:push": "supabase db push",
+    "supabase:pull": "supabase db pull"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.1",
@@ -25,6 +39,9 @@
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
+    "@stripe/stripe-js": "^4.5.0",
+    "@supabase/ssr": "^0.5.1",
+    "@supabase/supabase-js": "^2.45.4",
     "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -38,6 +55,7 @@
     "react-error-boundary": "^4.0.13",
     "react-is": "rc",
     "recharts": "alpha",
+    "stripe": "^16.12.0",
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
@@ -50,6 +68,7 @@
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-eslint": "^16.3.0",
+    "supabase": "^1.192.5",
     "tailwindcss": "^3.4.12",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"

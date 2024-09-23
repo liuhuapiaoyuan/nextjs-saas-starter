@@ -11,6 +11,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Combobox } from './_components/Combobox'
+import { getUser } from '@/lib/auth'
 
 const languages = [
   { label: 'English', value: 'en' },
@@ -24,7 +25,8 @@ const languages = [
   { label: 'Chinese', value: 'zh' },
 ]
 
-export default function ProfilePage() {
+export default async function ProfilePage() {
+  const user = await getUser()
   return (
     <div className='grid gap-5'>
       <Card>
@@ -33,8 +35,9 @@ export default function ProfilePage() {
           <CardDescription>修改账户基本信息</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form className='space-y-3'>
             <Input placeholder='Nickname' />
+            <Input placeholder='Nickname' value={user?.email} />
           </form>
         </CardContent>
         <CardFooter className='border-t px-6 py-4'>

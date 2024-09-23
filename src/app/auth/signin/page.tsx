@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { signInWithPassword } from '@/lib/auth'
 
 export default function AuthSigninPage() {
   return (
@@ -16,11 +17,12 @@ export default function AuthSigninPage() {
               输入您的电子邮件以登录您的账户
             </p>
           </div>
-          <div className='grid gap-4'>
+          <form action={signInWithPassword} className='grid gap-4'>
             <div className='grid gap-2'>
               <Label htmlFor='email'>电子邮件</Label>
               <Input
                 id='email'
+                name='email'
                 type='email'
                 placeholder='m@example.com'
                 required
@@ -36,7 +38,7 @@ export default function AuthSigninPage() {
                   忘记密码？
                 </Link>
               </div>
-              <Input id='password' type='password' required />
+              <Input name='password' id='password' type='password' required />
             </div>
             <Button type='submit' className='w-full'>
               登录
@@ -44,7 +46,7 @@ export default function AuthSigninPage() {
             <Button variant='outline' className='w-full'>
               使用 Google 登录
             </Button>
-          </div>
+          </form>
           <div className='mt-4 text-center text-sm'>
             没有账户？{' '}
             <Link href='signup' className='underline'>

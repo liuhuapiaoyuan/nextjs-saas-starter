@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export function UserCard() {
+export async function UserCard() {
   return (
     <>
       <div className='flex flex-col items-center'>

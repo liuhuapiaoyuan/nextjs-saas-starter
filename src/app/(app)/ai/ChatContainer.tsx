@@ -58,7 +58,7 @@ export async function ChatContainer() {
           <SheetTrigger asChild>
             <Button
               variant='ghost'
-              className='w-10 h-10 p-0  md:hidden flex items-center justify-center '
+              className='w-10 h-10 p-0  lg:hidden flex items-center justify-center '
             >
               <Menu className='size-5 ' />
             </Button>

@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button'
+import { getUser } from '@/lib/auth'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export function UserCard() {
+export async function UserCard() {
+  const user = await getUser()
   return (
     <div className='w-full max-w-sm rounded-lg border border-slate-200 bg-white px-3 py-6 shadow dark:border-slate-700 dark:bg-slate-800'>
       <div className='flex items-center justify-between'>
@@ -22,7 +24,7 @@ export function UserCard() {
             <h3 className='text-sm font-bold text-slate-900 dark:text-slate-200'>
               John Doe
             </h3>
-            <span className='text-xs text-slate-400'>johndoe@gmail.com</span>
+            <span className='text-xs text-slate-400'>{user.email}</span>
           </div>
         </div>
         <span className='rounded-full bg-green-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-green-600'>
