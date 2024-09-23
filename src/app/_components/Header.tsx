@@ -1,6 +1,14 @@
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import { HeaderSheetMenu } from './HeaderSheetMenu'
+
 export function Header() {
   return (
-    <header className='bg-[#FCF8F1] bg-opacity-30'>
+    <header className='bg-[#FCF8F1] bg-opacity-30  sticky top-0 z-[30]'>
       <div className='px-4 mx-auto sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16 lg:h-20'>
           <div className='flex-shrink-0'>
@@ -13,41 +21,47 @@ export function Header() {
             </a>
           </div>
 
-          <button
-            type='button'
-            className='inline-flex p-2 text-black transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100'
-          >
-            <svg
-              className='block w-6 h-6'
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M4 8h16M4 16h16'
-              />
-            </svg>
+          <Sheet>
+            <SheetTrigger asChild>
+              <button
+                type='button'
+                className='inline-flex p-2 text-black transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100'
+              >
+                <svg
+                  className='block w-6 h-6'
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M4 8h16M4 16h16'
+                  />
+                </svg>
 
-            <svg
-              className='hidden w-6 h-6'
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M6 18L18 6M6 6l12 12'
-              />
-            </svg>
-          </button>
-
+                <svg
+                  className='hidden w-6 h-6'
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M6 18L18 6M6 6l12 12'
+                  />
+                </svg>
+              </button>
+            </SheetTrigger>
+            <SheetContent className=''>
+              <HeaderSheetMenu />
+            </SheetContent>
+          </Sheet>
           <div className='hidden lg:flex lg:items-center lg:justify-center lg:space-x-10'>
             <a
               href='#feature'
