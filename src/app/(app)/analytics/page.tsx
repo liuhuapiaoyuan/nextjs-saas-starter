@@ -17,7 +17,8 @@ import {
 import { AreaChartDemo } from '../dashboard/AreaChartDemo'
 import { Counters } from '../dashboard/Counters'
 import { RecentSales } from '../dashboard/RecentSales'
-
+import { ErrorBoundary } from 'react-error-boundary'
+import ErrorFallback from '@/components/app/error-fallback'
 
 export default function Component() {
   return (
@@ -35,7 +36,9 @@ export default function Component() {
             <CardTitle>Overview</CardTitle>
           </CardHeader>
           <CardContent className='pl-2'>
-            <AreaChartDemo />
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <AreaChartDemo />
+            </ErrorBoundary>
           </CardContent>
         </Card>
         <Card className='col-span-4 md:col-span-3'>
