@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Button, ButtonProps } from '../ui/button'
-import { Loader } from 'lucide-react'
+import { PiSpinnerLight } from 'react-icons/pi'
 import { cn } from '@/lib/utils'
 import { useFormStatus } from 'react-dom'
 
@@ -36,7 +36,7 @@ const AppButton = React.forwardRef<HTMLButtonElement, AppButtonProps>(
         {...props}
       >
         <span className='mr-2'>
-          {loading ? <Loader className='size-4 animate-spin' /> : icon}
+          {loading ? <PiSpinnerLight className='size-4 animate-spin' /> : icon}
         </span>
         {children}
       </Button>

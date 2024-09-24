@@ -45,9 +45,7 @@ export default function AuthSigninPage() {
               登录
             </Button>
           </form>
-          <div className='grid gap-4'>
-            <OauthSignIn />
-          </div>
+          <OauthSignIn />
           <div className='mt-4 text-center text-sm'>
             没有账户？{' '}
             <Link href='signup' className='underline'>
