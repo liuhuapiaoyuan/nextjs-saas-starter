@@ -3,7 +3,12 @@
 import { redirect } from 'next/navigation'
 import { createClient } from './supabase/server'
 import { Provider } from '@supabase/supabase-js'
-import { getURL } from './helpers'
+import {
+  getErrorRedirect,
+  getStatusRedirect,
+  getURL,
+  isValidEmail,
+} from './helpers'
 
 /**
  *  signs up the user and redirects to the sign in page

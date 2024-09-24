@@ -1,44 +1,47 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { resetPasswordForEmail, signInWithPassword } from '@/lib/auth'
-import OauthSignIn from '../_components/OauthSignIn'
-import { AppButton, SubmitButton } from '@/components/app/app-button'
+import { signUpWithPassword } from '@/lib/auth'
 
-export default function ForgotPasswordPage() {
+export default function AuthSignupPage() {
   return (
     <div className='w-full lg:grid h-[100vh] lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]'>
       <div className='flex items-center justify-center py-12'>
         <div className='mx-auto grid w-[350px] gap-6'>
           <div className='grid gap-2 text-center'>
-            <h1 className='text-3xl font-bold'>找回密码</h1>
-            <p className='text-balance text-muted-foreground'>
-              输入您的电子邮件以找回您的密码
-            </p>
+            <h1 className='text-3xl font-bold'>输入新密码</h1>
+            <p className='text-balance text-muted-foreground'>输入新密码</p>
           </div>
-          <form action={resetPasswordForEmail} className='grid gap-4'>
+          <form action={signUpWithPassword} className='grid gap-4'>
             <div className='grid gap-2'>
-              <Label htmlFor='email'>电子邮件</Label>
+              <Label htmlFor='email'>账号</Label>
               <Input
                 id='email'
-                name='email'
                 type='email'
+                name='email'
                 placeholder='m@example.com'
                 required
               />
             </div>
-            <SubmitButton type='submit' className='w-full'>
-              发送到邮箱
-            </SubmitButton>
+            <div className='grid gap-2'>
+              <div className='flex items-center'>
+                <Label htmlFor='password'>密码</Label>
+              </div>
+              <Input name='password' id='password' type='password' required />
+            </div>
+            <Button type='submit' className='w-full'>
+              登录
+            </Button>
+            <Button variant='outline' className='w-full'>
+              使用 Google 登录
+            </Button>
           </form>
-          <div className='grid gap-4'>
-            <OauthSignIn />
-          </div>
           <div className='mt-4 text-center text-sm'>
-            返回
-            <Link href='signup' className='underline'>
+            已拥有账户？{' '}
+            <Link href='signin' className='underline'>
               登录
             </Link>
           </div>
