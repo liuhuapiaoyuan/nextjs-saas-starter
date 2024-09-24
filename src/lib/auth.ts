@@ -86,3 +86,95 @@ export async function signInWithOAuth(provider: Provider) {
   }
   throw new Error('登录失败:' + (res.error ?? ''))
 }
+
+/**
+ * @description 更新密码
+ * @param formData
+ * @returns
+ */
+export async function updatePassword(formData: FormData) {
+  const password = String(formData.get('password')).trim()
+  const passwordConfirm = String(formData.get('passwordConfirm')).trim()
+  let redirectPath: string
+
+  // Check that the password and confirmation match
+  if (password !== passwordConfirm) {
+    redirectPath = getErrorRedirect(
+      '/signin/update_password',
+      'Your password could not be updated.',
+      'Passwords do not match.'
+    )
+  }
+
+  const supabase = createClient()
+  const { error, data } = await supabase.auth.updateUser({
+    password,
+  })
+
+  if (error) {
+    redirectPath = getErrorRedirect(
+      '/signin/update_password',
+      'Your password could not be updated.',
+      error.message
+    )
+  } else if (data.user) {
+    redirectPath = getStatusRedirect(
+      '/',
+      'Success!',
+      'Your password has been updated.'
+    )
+  } else {
+    redirectPath = getErrorRedirect(
+      '/signin/update_password',
+      'Hmm... Something went wrong.',
+      'Your password could not be updated.'
+    )
+  }
+
+  return redirectPath
+}
+
+export async function resetPasswordForEmail(formData: FormData) {
+  const callbackURL = getURL('/auth/callback/reset_password')
+
+  // Get form data
+  const email = String(formData.get('email')).trim()
+  let redirectPath: string
+
+  if (!isValidEmail(email)) {
+    redirectPath = getErrorRedirect(
+      '/auth/forgot_password',
+      'Invalid email address.',
+      'Please try again.'
+    )
+  }
+
+  const supabase = createClient()
+
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: callbackURL,
+  })
+
+  if (error) {
+    redirectPath = getErrorRedirect(
+      '/auth/forgot_password',
+      error.message,
+      'Please try again.'
+    )
+  } else if (data) {
+    redirectPath = getStatusRedirect(
+      '/auth/forgot_password',
+      'Success!',
+      'Please check your email for a password reset link. You may now close this tab.',
+      true
+    )
+  } else {
+    redirectPath = getErrorRedirect(
+      '/auth/forgot_password',
+      'Hmm... Something went wrong.',
+      'Password reset email could not be sent.'
+    )
+  }
+
+  return redirectPath
+}

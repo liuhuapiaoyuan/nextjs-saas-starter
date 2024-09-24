@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { signInWithPassword } from '@/lib/auth'
 import OauthSignIn from '../_components/OauthSignIn'
+import { AppButton } from '@/components/app/app-button'
 
 export default function AuthSigninPage() {
   return (
@@ -13,9 +14,9 @@ export default function AuthSigninPage() {
       <div className='flex items-center justify-center py-12'>
         <div className='mx-auto grid w-[350px] gap-6'>
           <div className='grid gap-2 text-center'>
-            <h1 className='text-3xl font-bold'>登录</h1>
+            <h1 className='text-3xl font-bold'>找回密码</h1>
             <p className='text-balance text-muted-foreground'>
-              输入您的电子邮件以登录您的账户
+              输入您的电子邮件以找回您的密码
             </p>
           </div>
           <form action={signInWithPassword} className='grid gap-4'>
@@ -29,29 +30,17 @@ export default function AuthSigninPage() {
                 required
               />
             </div>
-            <div className='grid gap-2'>
-              <div className='flex items-center'>
-                <Label htmlFor='password'>密码</Label>
-                <Link
-                  href='forgot-password'
-                  className='ml-auto inline-block text-sm underline'
-                >
-                  忘记密码？
-                </Link>
-              </div>
-              <Input name='password' id='password' type='password' required />
-            </div>
-            <Button type='submit' className='w-full'>
-              登录
-            </Button>
+            <AppButton type='submit' className='w-full'>
+              发送到邮箱
+            </AppButton>
           </form>
           <div className='grid gap-4'>
             <OauthSignIn />
           </div>
           <div className='mt-4 text-center text-sm'>
-            没有账户？{' '}
+            返回
             <Link href='signup' className='underline'>
-              注册
+              登录
             </Link>
           </div>
         </div>

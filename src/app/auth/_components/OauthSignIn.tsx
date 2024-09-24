@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { signInWithOAuth } from '@/lib/auth'
 import { type Provider } from '@supabase/supabase-js'
-import { Github } from 'lucide-react'
+import { Github, Loader, SplineIcon } from 'lucide-react'
 import { useState, useTransition } from 'react'
 
 type OAuthProviders = {
@@ -36,11 +36,28 @@ export default function OauthSignIn() {
 
   return (
     <>
+      <div className='relative py-5 px-20 text-gray-400'>
+        <div className='border-b border-gray-200 h-2 mb-2' />
+        <div className='absolute top-0 left-0 bottom-0 flex justify-center items-center right-0'>
+          <span className='bg-white text-sm px-3'>OR</span>
+        </div>
+      </div>
       {oAuthProviders.map(provider => (
         <form key={provider.name} className='pb-2' action={handleSubmit}>
           <input type='hidden' name='provider' value={provider.name} />
-          <Button type='submit' className='w-full'>
-            <span className='mr-2'>{provider.icon}</span>
+          <Button
+            data-loading={pending}
+            type='submit'
+            className='w-full data-[loading=true]:bg-primary/50'
+          >
+            <span className='mr-2'>
+              {pending ? (
+                <Loader className='size-4 animate-spin' />
+              ) : (
+                provider.icon
+              )}
+            </span>
+
             <span>{provider.displayName}</span>
           </Button>
         </form>
