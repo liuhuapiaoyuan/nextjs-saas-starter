@@ -76,14 +76,14 @@ export async function getUser() {
 /**
  * 第三方登录
  */
-export async function signInWithOAuth(provider: Provider) {
+export async function signInWithOAuth(formData: FormData) {
+  const provider = String(formData.get('provider')).trim() as Provider
   const supabase = createClient()
   const redirectTo = getURL('/auth/callback')
   const res = await supabase.auth.signInWithOAuth({
     provider,
     options: {
       redirectTo,
-      scopes: 'email',
     },
   })
   if (res.data?.url) {
