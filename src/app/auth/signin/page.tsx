@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { signInWithPassword } from '@/lib/auth'
+import OauthSignIn from '../_components/OauthSignIn'
 
 export default function AuthSigninPage() {
   return (
@@ -43,10 +44,10 @@ export default function AuthSigninPage() {
             <Button type='submit' className='w-full'>
               登录
             </Button>
-            <Button variant='outline' className='w-full'>
-              使用 Google 登录
-            </Button>
           </form>
+          <div className='grid gap-4'>
+            <OauthSignIn />
+          </div>
           <div className='mt-4 text-center text-sm'>
             没有账户？{' '}
             <Link href='signup' className='underline'>

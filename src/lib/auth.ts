@@ -2,6 +2,8 @@
 
 import { redirect } from 'next/navigation'
 import { createClient } from './supabase/server'
+import { Provider } from '@supabase/supabase-js'
+import { getURL } from './helpers'
 
 /**
  *  signs up the user and redirects to the sign in page
@@ -58,11 +60,29 @@ export async function getUser() {
   const supabase = createClient()
   const { data, error } = await supabase.auth.getUser()
   if (error) {
-    console.log('获取用户信息失败', error)
-    redirect('/auth/sign')
+    return redirect('/auth/signin')
   }
   if (data.user) {
     return data.user
   }
-  redirect('/auth/sign')
+  redirect('/auth/signin')
+}
+
+/**
+ * 第三方登录
+ */
+export async function signInWithOAuth(provider: Provider) {
+  const supabase = createClient()
+  const redirectTo = getURL('/auth/callback')
+  const res = await supabase.auth.signInWithOAuth({
+    provider,
+    options: {
+      redirectTo,
+      scopes: 'email',
+    },
+  })
+  if (res.data?.url) {
+    return redirect(res.data.url)
+  }
+  throw new Error('登录失败:' + (res.error ?? ''))
 }

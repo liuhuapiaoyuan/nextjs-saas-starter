@@ -68,7 +68,7 @@
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-eslint": "^16.3.0",
-    "supabase": "^1.192.5",
+    "supabase": "^1.200.3",
     "tailwindcss": "^3.4.12",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"

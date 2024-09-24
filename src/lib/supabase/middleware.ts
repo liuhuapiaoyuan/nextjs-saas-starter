@@ -1,5 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
+import { redirect } from 'next/navigation'
 import { type NextRequest, NextResponse } from 'next/server'
+import { getUser } from '../auth'
 
 export const createClient = (request: NextRequest) => {
   // Create an unmodified response
@@ -18,9 +20,7 @@ export const createClient = (request: NextRequest) => {
           return cookieStore.getAll()
         },
         setAll(cookies) {
-          cookieStore.getAll().map(cookie => {
-            cookieStore.delete(cookie.name)
-          })
+          cookieStore.clear()
           cookies.map(cookie => {
             cookieStore.set(cookie)
           })
@@ -40,8 +40,10 @@ export const updateSession = async (request: NextRequest) => {
 
     // This will refresh session if expired - required for Server Components
     // https://supabase.com/docs/guides/auth/server-side/nextjs
-    await supabase.auth.getUser()
-
+    const user = await getUser()
+    if (!user) {
+      return NextResponse.redirect(new URL('/auth/signin', request.nextUrl))
+    }
     return response
   } catch (e) {
     // If you are here, a Supabase client could not be created!
