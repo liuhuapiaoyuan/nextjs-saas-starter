@@ -2,12 +2,14 @@ import { PrismaClient } from '@prisma/client'
 import { extension as paginateExtension } from 'prisma-paginate'
 import { ExistsExtension } from './prisma-extension/exists-extension'
 import { SoftdeleteExtension } from './prisma-extension/softdelete-extension'
+import { LogExtension } from './prisma-extension/log-extension'
 
 function createPrisma() {
   return new PrismaClient()
     .$extends(paginateExtension)
     .$extends(ExistsExtension)
     .$extends(SoftdeleteExtension)
+    .$extends(LogExtension)
 }
 
 declare global {

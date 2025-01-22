@@ -5,17 +5,13 @@ declare global {
   type ModelPageQuery<T extends Prisma.ModelName> =
     Prisma.TypeMap['model'][T]['operations']['findMany']['args'] &
       PaginationArgs
-  type ModelPageResult<T extends Prisma.ModelName> = {
-    data: Prisma.Result<
-      Prisma.TypeMap['model'][T],
-      Prisma.TypeMap['model'][T]['operations']['findMany']['args'],
-      'findMany'
-    >
-    total: number
-    page: number
-    pageSize: number
-    totalPages: number
-  }
+
+  type Model<T extends Prisma.ModelName> = Prisma.Result<
+    Prisma.TypeMap['model'][T],
+    Prisma.TypeMap['model'][T]['operations']['findUnique']['args'],
+    'findUnique'
+  >
+
   type ModelCreate<T extends Prisma.ModelName> = Prisma.Args<
     T,
     'create'

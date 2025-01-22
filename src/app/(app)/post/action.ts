@@ -11,6 +11,7 @@ export async function get(id: string) {
     where: { id },
   })
 }
+export type PostModel = Awaited<ReturnType<typeof get>>
 
 /**
  * 新建对象
@@ -89,7 +90,9 @@ export async function findMany(ids: string[]) {
 export async function exists(where: ModelExists<'Post'>) {
   return db.post.exists(where)
 }
-
+export async function list(params: ModelFindMany<'Post'>) {
+  return db.post.findMany(params)
+}
 /**
  * 分页查找对象
  * @param params
@@ -98,15 +101,23 @@ export async function exists(where: ModelExists<'Post'>) {
 export async function pagination(params: ModelPageQuery<'Post'>) {
   return db.post.paginate(params)
 }
-
 /**
  * 查询回收站中的记录
  * @param params 分页参数
  * @returns 回收站中的记录
  */
-export async function getRecycleBin(params: ModelPageQuery<'Post'>) {
+export async function recycleBinPagination(params: ModelPageQuery<'Post'>) {
   const { where, ...args } = params
   return db.post.paginate({
+    where: Object.assign({}, where, {
+      deletedAt: { not: null }, // 查询软删除的记录
+    }),
+    ...args,
+  })
+}
+export async function recycleBinList(params: ModelFindMany<'Post'>) {
+  const { where, ...args } = params
+  return db.post.findMany({
     where: Object.assign({}, where, {
       deletedAt: { not: null }, // 查询软删除的记录
     }),

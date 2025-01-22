@@ -45,7 +45,8 @@ export type DataTableProps<T> = {
     onChange?: (page: number, pageSize: number) => void
   } // 分页配置
   rowKey?: keyof T | string // 唯一标识字段
-  searchableColumns?: string[] // 可搜索的列名
+  // 
+  searchableColumns?: Array<keyof T> // 可搜索的列名
   onChange?: (pagination: any, filters: any, sorter: any) => void // 分页、筛选、排序的回调
   rowSelection?: {
     selectedRowKeys: (keyof T)[]
@@ -77,14 +78,6 @@ export function DataTable<T extends object>({
     React.useState<RowSelectionState>({})
   const [globalFilter, setGlobalFilter] = React.useState<string>('')
 
-  // 处理数据加载
-  React.useEffect(() => {
-    if (typeof dataSource === 'function') {
-      dataSource().then(setData)
-    } else {
-      setData(dataSource)
-    }
-  }, [dataSource])
   const table = useReactTable({
     data,
     columns,
@@ -122,6 +115,14 @@ export function DataTable<T extends object>({
       globalFilter,
     },
   })
+  // 处理数据加载
+  React.useEffect(() => {
+    if (typeof dataSource === 'function') {
+      dataSource().then(setData)
+    } else {
+      setData(dataSource)
+    }
+  }, [dataSource])
 
   // 处理分页器变化
   const handlePageChange = (page: number, pageSize: number) => {
@@ -148,9 +149,9 @@ export function DataTable<T extends object>({
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                   </TableHead>
                 ))}
               </TableRow>
